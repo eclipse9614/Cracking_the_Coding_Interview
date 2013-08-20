@@ -23,6 +23,19 @@ def hasUniqueCharsOnlyInAscII(input_str):
     return True
 
 
+def hasUniqueCharsOnlyInAscII2(input_str):
+    storage = [0] * 8
+    for ch in input_str:
+        val = ord(ch)
+        index = val / 32
+        remainder = val - index * 32
+        if storage[index] & 2 ** remainder:
+            return False
+        else:
+            storage[index] += 2 ** remainder
+    return True
+
+
 class Test(unittest.TestCase):
     def testGeneral(self):
         self.assertTrue(hasUniqueCharsGeneral("12345678"))
@@ -40,5 +53,12 @@ class Test(unittest.TestCase):
         self.assertTrue(hasUniqueCharsOnlyInAscII("1234567890"))
         self.assertTrue(hasUniqueCharsOnlyInAscII("abcdefghijklmnopqrstuvwxyz"))
         self.assertTrue(hasUniqueCharsOnlyInAscII("ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
-
+        self.assertTrue(hasUniqueCharsOnlyInAscII("".join([chr(i) for i in range(0, 256)])))
         self.assertFalse(hasUniqueCharsOnlyInAscII("11"))
+
+    def testAscII2(self):
+        self.assertTrue(hasUniqueCharsOnlyInAscII2("1234567890"))
+        self.assertTrue(hasUniqueCharsOnlyInAscII2("abcdefghijklmnopqrstuvwxyz"))
+        self.assertTrue(hasUniqueCharsOnlyInAscII2("ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
+        self.assertTrue(hasUniqueCharsOnlyInAscII2("".join([chr(i) for i in range(0, 256)])))
+        self.assertFalse(hasUniqueCharsOnlyInAscII2("11"))
