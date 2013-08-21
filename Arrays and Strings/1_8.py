@@ -13,7 +13,7 @@ def isRotation(s1, s2):
 
 class Test(unittest.TestCase):
     def test(self):
-        # true
+        # true cases
         self.assertTrue(isRotation("a", "a"))
         self.assertTrue(isRotation("ba", "ab"))
         self.assertTrue(isRotation("ab", "ba"))
@@ -27,7 +27,7 @@ class Test(unittest.TestCase):
         self.assertTrue(isRotation("1234", "3412"))
         self.assertTrue(isRotation("4123", "1234"))
         self.assertTrue(isRotation("1234", "4123"))
-        # false
+        # false cases
         self.assertFalse(isRotation("123", "321"))
         self.assertFalse(isRotation("231", "321"))
         self.assertFalse(isRotation("312", "321"))
