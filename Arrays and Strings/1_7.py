@@ -3,23 +3,21 @@ import unittest
 
 
 def cleanRowsColumns(matrix):
-    rows = []
-    columns = []
     rows_count = len(matrix)
     assert rows_count != 0
     columns_count = len(matrix[0])
     assert columns_count != 0
+    rows = [False] * rows_count
+    columns = [False] * columns_count
     for i in range(rows_count):
         for j in range(columns_count):
             if matrix[i][j] == 0:
-                rows.append(i)
-                columns.append(j)
-    for index in range(columns_count):
-        for row in rows:
-            matrix[row][index] = 0
-    for index in range(rows_count):
-        for column in columns:
-            matrix[index][column] = 0
+                rows[i] = True
+                columns[j] = True
+    for i in range(rows_count):
+        for j in range(columns_count):
+            if rows[i] or columns[j]:
+                matrix[i][j] = 0
 
 
 class Test(unittest.TestCase):
