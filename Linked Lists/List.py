@@ -22,6 +22,8 @@ class LinkedList(object):
         self.last = self.head
 
     def _findNodeBeforePos(self, pos):
+        if pos < 0:
+            raise IndexError()
         preview = self.head
         for i in range(pos):
             preview = preview.next
