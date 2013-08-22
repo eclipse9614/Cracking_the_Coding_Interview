@@ -55,6 +55,9 @@ class TestList(unittest.TestCase):
             self.assertEqual(curList.get(x).value, x ** 2)
         for x in range(100, 105):
             self.assertRaises(IndexError, curList.get, x)
+        # negative index checking
+        for i in range(-10, 0):
+            self.assertRaises(IndexError, curList.get, i)
 
     def testDelete(self):
         curList = self.list
@@ -71,7 +74,7 @@ class TestList(unittest.TestCase):
             curList.delete(i)
             del res[i]
         for pos, element in enumerate(res):
-            self.assertEqual(curList.get(pos), element)
+            self.assertEqual(curList.get(pos).value, element)
 
     def testIteration(self):
         curList = self.list
