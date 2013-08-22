@@ -72,3 +72,12 @@ class TestList(unittest.TestCase):
             del res[i]
         for pos, element in enumerate(res):
             self.assertEqual(curList.get(pos), element)
+
+    def testIteration(self):
+        curList = self.list
+        for x in curList:
+            self.fail("Should not enter here since it is empty")
+        for x in range(100):
+            curList.append(x)
+        for i, element in enumerate(curList):
+            self.assertEqual(i, element)

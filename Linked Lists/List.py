@@ -4,6 +4,18 @@ class Node(object):
         self.next = None
 
 
+class ListIterator(object):
+    def __init__(self, head):
+        self.current = head
+
+    def next(self):
+        if self.current.next:
+            self.current = self.current.next
+            return self.current.value
+        else:
+            raise StopIteration()
+
+
 class LinkedList(object):
     def __init__(self):
         self.head = Node()
@@ -47,3 +59,6 @@ class LinkedList(object):
             preview.next = preview.next.next
         else:
             raise IndexError()
+
+    def __iter__(self):
+        return ListIterator(self.head)
