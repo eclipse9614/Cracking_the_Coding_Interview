@@ -47,7 +47,7 @@ class LinkedList(object):
         # find the pos
         preview = self._findNodeBeforePos(pos)
         if preview.next:
-            return preview.next.value
+            return preview.next
         else:
             raise IndexError()
 

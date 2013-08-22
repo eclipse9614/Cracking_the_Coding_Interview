@@ -52,7 +52,7 @@ class TestList(unittest.TestCase):
         for x in range(100):
             curList.append(x ** 2)
         for x in range(100):
-            self.assertEqual(curList.get(x), x ** 2)
+            self.assertEqual(curList.get(x).value, x ** 2)
         for x in range(100, 105):
             self.assertRaises(IndexError, curList.get, x)
 
