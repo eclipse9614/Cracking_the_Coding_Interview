@@ -46,3 +46,11 @@ class Test(unittest.TestCase):
         for i in range(5):
             self.assertEqual(s.min(), i)
             self.assertEqual(s.pop(), i)
+
+    def test3(self):
+        s = Stack()
+        data = [9, 2, 5, 3, 0]
+        mins = [9, 2, 2, 2, 0]
+        for i, v in enumerate(data):
+            s.push(v)
+            self.assertEqual(s.min(), mins[i])
